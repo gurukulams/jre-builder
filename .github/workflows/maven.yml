@@ -33,7 +33,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
+#         passphrase: ${{ secrets.PASSPHRASE }}
         source: "./jre.tar.gz"
         target: ${{ secrets.SOFTWARES_DIR }}
         strip_components: 1
@@ -43,7 +43,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
+#         passphrase: ${{ secrets.PASSPHRASE }}
         target: ${{ secrets.SOFTWARES_DIR }}
         script:
           cd ${{ secrets.SOFTWARES_DIR }} && rm -rf jre jre && tar xvf jre.tar.gz jre && rm jre.tar.gz
