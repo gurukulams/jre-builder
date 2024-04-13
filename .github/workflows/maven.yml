@@ -27,23 +27,12 @@ jobs:
         tar cvzf jre.tar.gz jre/
         pwd
         ls
-    - name: Copy Artifacts
+    - name: Copy JRE
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-#         passphrase: ${{ secrets.PASSPHRASE }}
+        host: ${{ secrets.GURUKULAMS_HOST }}
+        username: ${{ secrets.GURUKULAMS_USER }}
+        key: ${{ secrets.GURUKULAMS_KEY }}
+        target: ${{ secrets.GURUKULAMS_PLATFORM_DIR }}
         source: "./jre.tar.gz"
-        target: ${{ secrets.SOFTWARES_DIR }}
         strip_components: 1
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-#         passphrase: ${{ secrets.PASSPHRASE }}
-        target: ${{ secrets.SOFTWARES_DIR }}
-        script:
-          cd ${{ secrets.SOFTWARES_DIR }} && rm -rf jre jre && tar xvf jre.tar.gz jre && rm jre.tar.gz
